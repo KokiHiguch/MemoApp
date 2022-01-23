@@ -11,6 +11,8 @@ export default function LogInScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // 表示された瞬間に呼び出されるメソッド
+  // []を入れると一回だけ呼び出されるようになる
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -20,6 +22,7 @@ export default function LogInScreen(props) {
         });
       }
     });
+    // もう一度関数を実行し、ログイン状態の監視を解除する
     return unsubscribe;
   }, []);
 
